@@ -12,9 +12,10 @@ favicon: 🍊
 </p>
 
 
-You can also find me on,
+Contact me: okgowild@outlook.com
+
+You can also find me on:
 - Mastodon: [@okgowild](https://mindly.social/@okgowild)
 - Telegram: [@okgowild](@okgowild)
 
-lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BbRLNfwdaTIm7%2FZC3NzJH8w%3D%3D)
 
