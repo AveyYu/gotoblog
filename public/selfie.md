@@ -1,7 +1,7 @@
 ---
 
 author: okgowild
-favicon: 🍊
+favicon: https://raw.githubusercontent.com/AveyYu/gotoblog/refs/heads/main/public/images/favicon.ico
 
 ---
 
