@@ -17,6 +17,6 @@ Contact me: okgowild@outlook.com
 
 You can also find me on:
 - Mastodon: [@okgowild](https://mindly.social/@okgowild)
-- Telegram: [@okgowild](@okgowild)
+- Telegram: [@okgowild](https://t.me/okgowild)
 
 
