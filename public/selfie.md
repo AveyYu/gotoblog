@@ -5,7 +5,6 @@ favicon: 🍊
 
 ---
 
-![avatar.png](./images/touxiang.png)
 
 ⭐️ The moment that you see the hidden sparks inside, is the moment to start searching.
 <p style="text-align:center; margin:20px 0;">
