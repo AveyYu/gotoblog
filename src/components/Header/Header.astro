@@ -10,6 +10,8 @@ const base = import.meta.env.BASE_URL;
 const nvis: Nvi[] = [
   { name: "about", url: urlFromBase(base, "/") },
   { name: "blog", url: urlFromBase(base, "blog") },
+  { name: "books", url: "https://www.notion.so/okgowild/OKGOWILD-Reading-List-92d7221c9c3147bda9f641ef6777b644?source=copy_link" },
+  { name: "movies", url: "https://www.notion.so/okgowild/97b8b36c1af3425a8fbd56e373a8728f?v=a508ba147f194e92b31750b22f06044e&source=copy_link" },
 ];
 ---
 
@@ -95,6 +97,8 @@ const nvis: Nvi[] = [
           <a
             class="underline underline-offset-4  hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"
             href={nvi.url}
+            target={nvi.url.startsWith("http") ? "_blank" : undefined}
+            rel={nvi.url.startsWith("http") ? "noopener" : undefined}
           >
             {nvi.name}
           </a>
