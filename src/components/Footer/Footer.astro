@@ -5,15 +5,26 @@ import { frontmatter as Selfie } from "#/selfie.md";
 const base = import.meta.env.BASE_URL;
 ---
 
+<!-- 
+  1. 将 my-10 修改为了 mt-24 mb-12：mt-24 大幅度增加了距离上方正文的间距。
+  2. 结构改为了 flex-col（垂直多行排列），并加了 gap-2（行间距）。
+-->
 <div
-  class="nobloger-animate flex flex-nowrap justify-center my-10 text-zinc-500 dark:text-zinc-500 text-light transition-opacity duration-300 ease-in-out opacity-0"
+  class="nobloger-animate flex flex-col items-center mt-24 mb-12 text-sm text-zinc-500 dark:text-zinc-500 text-light transition-opacity duration-300 ease-in-out opacity-0 gap-2"
 >
-  <div class="whitespace-nowrap">
-    ©️OKGOWILD since 2024. All rights reserved.
+  <!-- 第一行：版权与 RSS -->
+  <div class="flex flex-nowrap justify-center items-center">
+    <div class="whitespace-nowrap">
+      ©️OKGOWILD since 2024. All rights reserved.
+    </div>
+    <span class="px-2">｜</span>
+    <a class="underline whitespace-nowrap" href={urlFromBase(base, "rss.xml")}
+      >rss</a
+    >
   </div>
   
-  &nbsp;｜&nbsp;
-  <a class="underline whitespace-nowrap" href={urlFromBase(base, "rss.xml")}
-    >rss</a
-  >
+  <!-- 第二行：新增的个性化说明（字体稍小，带有淡淡的优雅感） -->
+  <div class="text-xs opacity-80 whitespace-nowrap">
+    crafted with ❤️ by okgowild
+  </div>
 </div>
