@@ -13,16 +13,12 @@ const { frontmatter } = Astro.props;
       <div class="mb-4 font-thin text-stone-600 dark:text-stone-400">
         Publish on {(frontmatter.pubDate ?? "").split("T")[0]}
       </div>
-      <div class="flex gap-2 mb-4">
+      <!-- 将底部的 mb-8 改回 mb-6，为虚线留出对称的距离 -->
+      <div class="flex gap-2 mb-6">
         {frontmatter.tags.map((tag: string) => <Ztag tag={tag} />)}
       </div>
-      <div class="text-lg italic text-stone-600 dark:text-stone-400">
-        {frontmatter.description}
-      </div>
-      <div
-        class="h-4 border-b-4 my-4 border-dashed border-stone-500 dark:border-stone-400"
-      >
-      </div>
+      <!-- 👇 新增的虚线行，与底部版权上方虚线的粗细、样式（dashed）和两态颜色（300/700）完全一致 -->
+      <div class="border-t border-dashed border-stone-300 dark:border-stone-700 my-6"></div>
     </div>
     <article
       class="prose dark:prose-invert prose-stone md:prose-lg prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl"
@@ -30,15 +26,13 @@ const { frontmatter } = Astro.props;
       <slot />
     </article>
 
-<!-- 融合版版权说明 -->
-<div class="mt-12 pt-6 border-t border-dashed border-stone-300 dark:border-stone-700 text-sm text-stone-500 dark:text-stone-400 text-left">
-  <p>
-    &copy; 版权所有。未经许可，禁止转载或摘编。<br>
-    All rights reserved. No reproduction or redistribution without prior written permission.
-  </p>
-</div>
+    <!-- 融合版版权说明 -->
+    <div class="mt-12 pt-6 border-t border-dashed border-stone-300 dark:border-stone-700 text-sm text-stone-500 dark:text-stone-400 text-left">
+      <p>
+        &copy; 版权所有。未经许可，禁止转载或摘编。<br>
+        All rights reserved. No reproduction or redistribution without prior written permission.
+      </p>
+    </div>
 
   </div>
 </BaseLayout>
-
-
