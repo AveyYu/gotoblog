@@ -2,9 +2,9 @@
 import { urlFromBase } from "@lib/utils";
 import { frontmatter as Selfie } from "#/selfie.md";
 
-const { pageTitle } = Astro.props;
+const { pageTitle, description } = Astro.props;
 const base = import.meta.env.BASE_URL;
-const siteDescription = Selfie.description ? Selfie.description : "OKGOWILD's blog";
+const siteDescription = description ? description : (Selfie.description ? Selfie.description : "OKGOWILD's blog");
 ---
 
 <head>
