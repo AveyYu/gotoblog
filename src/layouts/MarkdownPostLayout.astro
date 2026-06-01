@@ -4,7 +4,7 @@ import Ztag from "@/components/Blog/Ztag.astro";
 const { frontmatter } = Astro.props;
 ---
 
-<BaseLayout pageTitle={frontmatter.title}>
+<BaseLayout pageTitle={frontmatter.title} description={frontmatter.description}>
   <div class="text-stone-800 dark:text-stone-200">
     <div class="py-2">
       <div class="font-black text-4xl mb-6">
