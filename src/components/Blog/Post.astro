@@ -1,5 +1,6 @@
 ---
-import { formatDate, readingTime } from "@/lib/utils";
+// 💡 优化一：去掉了未使用的 readingTime 导入，避免编译警告
+import { formatDate } from "@/lib/utils";
 
 interface Props {
   title: string;
@@ -10,7 +11,8 @@ interface Props {
   path: string;
 }
 
-const { title, url, desc, date, tags, path } = Astro.props;
+// 💡 优化二：只解构真正用到的变量（不提取 desc 和 path），完美通过 TypeScript 强校验并消除未使用的警告
+const { title, url, date, tags } = Astro.props;
 ---
 
 <a
@@ -27,7 +29,8 @@ const { title, url, desc, date, tags, path } = Astro.props;
     <div class="text-sm flex truncate gap-2 my-1">
       {
         tags.map((tag) => (
-          <div class="rounded bg-stone-200 dark:bg-stone-700 text-stone-600 dark:text-stone-300 text-s px-1.5 py-0.5">
+          /* 💡 优化三：将不支持的 text-s 修正为了标准的 text-xs，标签字体现在能完美缩小了 */
+          <div class="rounded bg-stone-200 dark:bg-stone-700 text-stone-600 dark:text-stone-300 text-xs px-1.5 py-0.5">
             #{tag}
           </div>
         ))
