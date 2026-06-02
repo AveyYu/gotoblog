@@ -14,30 +14,49 @@ const cmp = (a: any, b: any) => {
 
 posts.sort(cmp);
 ---
+// 按年份对文章进行归类分组
+const postsByYear: Record<string, any[]> = {};
+posts.forEach((post) => {
+  const dateStr = post.frontmatter.pubDate;
+  const year = dateStr ? new Date(dateStr).getFullYear().toString() : "其它";
+  if (!postsByYear[year]) {
+    postsByYear[year] = [];
+  }
+  postsByYear[year].push(post);
+});
+
+// 获取降序排列的年份列表
+const years = Object.keys(postsByYear).sort((a, b) => b.localeCompare(a));
 
 <BaseLayout pageTitle={pageTitle}>
   <div class="flex flex-col gap-4">
     <div class="text-4xl text-stone-700 dark:text-stone-200 font-bold mb-8">
       OKGOWILD
     </div>
-    <input
-      data-posts={JSON.stringify(posts)}
-      id="search"
-      autocomplete="off"
-      class="h-8 w-1/2 rounded-md px-2 py-1 bg-slate-100 mb-2 border border-1 border-stone-400 text-stone-700 focus:border-stone-600 focus:outline-none dark:border-stone-400 dark:focus:border-stone-200 bg-stone-50 dark:bg-stone-800 dark:text-stone-300 transition-colors duration-200"
-    />
+  
 
-    {
-      posts.map((post) => (
-        <Post
-          url={post.url as string}
-          path={post.file}
-          title={post.frontmatter.title}
-          desc={post.frontmatter.description}
-          date={post.frontmatter.pubDate}
-          tags={post.frontmatter.tags}
-        />
-      ))
-    }
-  </div>
+    <div class="flex flex-col gap-10">
+      {
+        years.map((year) => (
+          <div class="flex flex-col gap-4">
+            <!-- 年份分栏线 -->
+            <div class="flex items-center gap-4 text-xl font-bold text-stone-700 dark:text-stone-300 mt-4 mb-2">
+              <span class="shrink-0">{year}</span>
+              <div class="grow border-t border-dashed border-stone-300 dark:border-stone-700"></div>
+            </div>
+            
+            <!-- 文章列表 -->
+            {postsByYear[year].map((post) => (
+              <Post
+                url={post.url as string}
+                path={post.file}
+                title={post.frontmatter.title}
+                date={post.frontmatter.pubDate}
+                tags={post.frontmatter.tags}
+              />
+            ))}
+          </div>
+        ))
+      }
+    </div>
 </BaseLayout>
