@@ -40,10 +40,10 @@ const years = Object.keys(postsByYear).sort((a, b) => b.localeCompare(a));
         years.map((year) => (
           <div class="flex flex-col gap-4">
             <!-- 年份分栏线 -->
-            <div class="flex items-center gap-4 text-xl font-bold text-stone-700 dark:text-stone-300 mt-4 mb-2">
-              <span class="shrink-0">{year}</span>
-              <div class="grow border-t border-dashed border-stone-300 dark:border-stone-700"></div>
-            </div>
+            <div class="flex items-center gap-4 text-xl text-stone-700 dark:text-stone-300 mt-4 mb-2">
+            <span class="shrink-0 font-normal pl-4">{year}</span>
+            <div class="grow border-t border-dashed border-stone-300 dark:border-stone-700"></div>
+          </div>
             
             <!-- 文章列表 -->
             {postsByYear[year].map((post) => (
