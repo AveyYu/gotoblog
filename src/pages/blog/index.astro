@@ -13,8 +13,8 @@ const cmp = (a: any, b: any) => {
 };
 
 posts.sort(cmp);
----
-// 按年份对文章进行归类分组
+
+// 💡 修正一：将这部分 JavaScript 代码移入到了 --- 内部，使其成为合法的 Astro 头部代码
 const postsByYear: Record<string, any[]> = {};
 posts.forEach((post) => {
   const dateStr = post.frontmatter.pubDate;
@@ -25,16 +25,16 @@ posts.forEach((post) => {
   postsByYear[year].push(post);
 });
 
-// 获取降序排列的年份列表
 const years = Object.keys(postsByYear).sort((a, b) => b.localeCompare(a));
+---
 
+<!-- 完美保留了您所有的自定义样式（如 text-4xl, gap-4, mb-8） -->
 <BaseLayout pageTitle={pageTitle}>
   <div class="flex flex-col gap-4">
     <div class="text-4xl text-stone-700 dark:text-stone-200 font-bold mb-8">
       OKGOWILD
     </div>
   
-
     <div class="flex flex-col gap-10">
       {
         years.map((year) => (
@@ -51,6 +51,8 @@ const years = Object.keys(postsByYear).sort((a, b) => b.localeCompare(a));
                 url={post.url as string}
                 path={post.file}
                 title={post.frontmatter.title}
+                /* 💡 修正二：补上了 desc，以通过 TypeScript 的强制接口校验，且不展示描述内容 */
+                desc={post.frontmatter.description}
                 date={post.frontmatter.pubDate}
                 tags={post.frontmatter.tags}
               />
@@ -59,4 +61,5 @@ const years = Object.keys(postsByYear).sort((a, b) => b.localeCompare(a));
         ))
       }
     </div>
+  </div> <!-- 💡 修正三：补上了这行原本缺失的闭合 </div> 标签 -->
 </BaseLayout>
