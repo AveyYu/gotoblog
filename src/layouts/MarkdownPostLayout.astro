@@ -26,15 +26,18 @@ const { frontmatter } = Astro.props;
       <slot />
     </article>
 
-    <!-- 融合版版权说明（加入左右两栏自适应布局与 Not by AI 徽章） -->
-    <div class="mt-12 pt-6 border-t border-dashed border-stone-300 dark:border-stone-700 text-sm text-stone-500 dark:text-stone-400 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-left">
+    <!-- 融合版版权说明（英文精细缩小 & 两栏间距拉大到 gap-8） -->
+    <div class="mt-12 pt-6 border-t border-dashed border-stone-300 dark:border-stone-700 text-sm text-stone-500 dark:text-stone-400 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-8 text-left">
       <!-- 左侧版权声明 -->
       <p class="leading-relaxed">
-        &copy; 版权所有。未经许可，禁止转载或摘编。<br>
-        All rights reserved. No reproduction or redistribution without prior written permission.
+        &copy; 版权所有。未经许可，禁止转载或摘编。
+        <!-- 💡 英文专属容器：字号缩小为 text-xs，设定 block 自动换行，并留有 mt-1 的微小行距 -->
+        <span class="block text-xs opacity-75 mt-1">
+          All rights reserved. No reproduction or redistribution without prior written permission.
+        </span>
       </p>
       
-      <!-- 右侧 Not by AI 徽章（自动适应白天/黑夜模式，点击可跳转至官网） -->
+      <!-- 右侧 Not by AI 徽章（间距已拉开至完美的 gap-8 宽度） -->
       <a href="https://notbyai.fyi" target="_blank" rel="noopener" class="shrink-0">
         <img 
           src="/not-by-ai.png" 
