@@ -26,12 +26,22 @@ const { frontmatter } = Astro.props;
       <slot />
     </article>
 
-    <!-- 融合版版权说明 -->
-    <div class="mt-12 pt-6 border-t border-dashed border-stone-300 dark:border-stone-700 text-sm text-stone-500 dark:text-stone-400 text-left">
-      <p>
+    <!-- 融合版版权说明（加入左右两栏自适应布局与 Not by AI 徽章） -->
+    <div class="mt-12 pt-6 border-t border-dashed border-stone-300 dark:border-stone-700 text-sm text-stone-500 dark:text-stone-400 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-left">
+      <!-- 左侧版权声明 -->
+      <p class="leading-relaxed">
         &copy; 版权所有。未经许可，禁止转载或摘编。<br>
         All rights reserved. No reproduction or redistribution without prior written permission.
       </p>
+      
+      <!-- 右侧 Not by AI 徽章（自动适应白天/黑夜模式，点击可跳转至官网） -->
+      <a href="https://notbyai.fyi" target="_blank" rel="noopener" class="shrink-0">
+        <img 
+          src="/not-by-ai.png" 
+          alt="Not by AI badge" 
+          class="h-9 w-auto dark:invert dark:brightness-90 transition-all duration-300"
+        />
+      </a>
     </div>
 
   </div>
